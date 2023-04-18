@@ -1,21 +1,28 @@
-const { twoSumTest } = require("./helperFunctions/createTestFile.js");
+const { twoSumTest, removeDuplicatesTest } = require("./helperFunctions/createTestFile.js");
 const assert = require('assert')
 const Model = require('./models.js')
 
 
 
 const codeRoast = async (req, res) => {
-  console.log('Problem Name Console Log',req.body)
+  console.log('Problem Name Console Log',req.body.problemName.targetProblem)
+
   if(req.body.problemName.targetProblem === 'TwoSum'){
     return twoSumTest(req.body);
-  } else {
+  }
+  else if(req.body.problemName.targetProblem === 'Remove Duplicates'){
+    console.log(req.body.problemName.targetProblem === 'Remove Duplicates')
+    return removeDuplicatesTest(req.body);
+  }
+
+  else {
     return "Problem Not Found"
   }
 };
 
 const getProblemData = async (req, res)=> {
-  const problemName = req.body;
- return  await Model.getProblemPageData('TwoSum').then(res => res).catch(err => console.log('err in controller', err))
+  const problemName = req.query.targetProblem;
+ return  await Model.getProblemPageData(problemName).then(res => res).catch(err => console.log('err in controller', err))
 }
 
 

@@ -31,7 +31,23 @@ const twoSumTest = (testCode) => {
     return error;
   }
 };
+const removeDuplicatesTest = (testCode) => {
+  console.log(testCode, 'test code in testing file')
+  const fn = new Function(`return ${testCode.code}`);
+  const test1 = fn().apply(null, [[1,1,2]]);
+  const test2 = fn().apply(null, [[0,0,1,1,1,2,2,3,3,4]]);
+
+  try {
+    assert.deepEqual(test1, 2);
+    assert.deepEqual(test2, 5);
+
+    return "All Test Passed!";
+  } catch (error) {
+    return error;
+  }
+};
 
 module.exports = {
   twoSumTest,
+  removeDuplicatesTest
 };
