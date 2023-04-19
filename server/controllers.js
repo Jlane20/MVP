@@ -1,35 +1,52 @@
-const { twoSumTest, removeDuplicatesTest } = require("./helperFunctions/createTestFile.js");
-const assert = require('assert')
-const Model = require('./models.js')
-
-
+const {
+  twoSumTest,
+  removeDuplicatesTest,
+} = require("./helperFunctions/createTestFile.js");
+const assert = require("assert");
+const Model = require("./models.js");
 
 const codeRoast = async (req, res) => {
-  console.log('Problem Name Console Log',req.body.problemName.targetProblem)
+  console.log("Problem Name Console Log", req.body.problemName.targetProblem);
 
-  if(req.body.problemName.targetProblem === 'TwoSum'){
+  if (req.body.problemName.targetProblem === "TwoSum") {
     return twoSumTest(req.body);
-  }
-  else if(req.body.problemName.targetProblem === 'Remove Duplicates'){
-    console.log(req.body.problemName.targetProblem === 'Remove Duplicates')
+  } else if (req.body.problemName.targetProblem === "Remove Duplicates") {
+    console.log(req.body.problemName.targetProblem === "Remove Duplicates");
     return removeDuplicatesTest(req.body);
-  }
-
-  else {
-    return "Problem Not Found"
+  } else {
+    return "Problem Not Found";
   }
 };
-
-const getProblemData = async (req, res)=> {
+const getProblemData = async (req, res) => {
   const problemName = req.query.targetProblem;
- return  await Model.getProblemPageData(problemName).then(res => res).catch(err => console.log('err in controller', err))
+  return await Model.getProblemPageData(problemName)
+    .then((res) => res)
+    .catch((err) => console.log("err in controller", err));
+};
+const testPassed = async (req, res) => {
+  const passData = req.body;
+  return await Model.testPassed(passData)
+    .then((res) => console.log("RESULT IN CONTROLLER", res))
+    .catch((err) => console.log("err in controller", err));
+};
+const testFailed = async (req, res) => {
+  const failData = req.body;
+  return await Model.testFailed(failData)
+    .then((res) => console.log("RESULT IN CONTROLLER", res))
+    .catch((err) => console.log("err in controller", err));
+};
+const updateGrading = async (req, res) => {
+  console.log('request received in controller for GRADING ---------')
+  const gradingData = req.body;
+  return await Model.updateGrading(gradingData).then((res) => console.log('result in controller for grading', res)).catch((err) => console.log('err in controller for grading', err))
 }
-
-
 
 module.exports = {
   codeRoast,
-  getProblemData
+  getProblemData,
+  testPassed,
+  testFailed,
+  updateGrading
 };
 //run this when received code and created file.
 //after receiving code from the front end

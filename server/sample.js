@@ -1,13 +1,13 @@
 const {expect, test} = require('@jest/globals')
 
-var twoSum = function(nums, target) {
+var twoSum = function(array, target) {
   const hash = {};
-  for(let i = 0; i < nums.length; i++) {
-      let needed = target - nums[i]
+  for(let i = 0; i < array.length; i++) {
+      let needed = target - array[i]
       if(hash[needed]!= undefined){
           return [hash[needed], i]
       } else {
-          hash[nums[i]] = i
+          hash[array[i]] = i
       }
   }
 };
