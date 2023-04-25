@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { v4: uuid } = require("uuid");
-const assert = require('assert')
+const assert = require("assert");
 
 // const testFile = path.join(__dirname, "testProblem");
 // if (!fs.existsSync(testFile)) {
@@ -32,14 +32,14 @@ const twoSumTest = (testCode) => {
   }
 };
 const removeDuplicatesTest = (testCode) => {
-  console.log(testCode, 'test code in testing file')
+  console.log(testCode, "test code in testing file");
   const fn = new Function(`return ${testCode.code}`);
-  const test1 = fn().apply(null, [[1,1,2]]);
-  const test2 = fn().apply(null, [[0,0,1,1,1,2,2,3,3,4]]);
-
+  const test1 = fn().apply(null, [[1, 1, 2]]);
+  const test2 = fn().apply(null, [[0, 0, 1, 1, 1, 2, 2, 3, 3, 4]]);
   try {
-    assert.deepEqual(test1, 2);
-    assert.deepEqual(test2, 5);
+
+      assert.deepEqual(test1, 2);
+      assert.deepEqual(test2, 5);
 
     return "All Test Passed!";
   } catch (error) {
@@ -47,7 +47,23 @@ const removeDuplicatesTest = (testCode) => {
   }
 };
 
+const sortedSquaresTest = async(testCode) => {
+  console.log('----------------------------');
+  const fn = new Function(`return ${testCode.code}`);
+  const test1 = fn().apply(null, [[-4, -1, 0, 3, 10]]);
+  const test2 = fn().apply(null, [[-7, -3, 2, 3, 11]]);
+  try {
+    assert.deepEqual(test1, [0, 1, 9, 16, 100]);
+    assert.deepEqual(test2, [4, 9, 9, 49, 121]);
+    return "All Test Passed!";
+  } catch (error) {
+    console.log('error in test',error)
+    return error;
+  }
+};
+
 module.exports = {
   twoSumTest,
-  removeDuplicatesTest
+  removeDuplicatesTest,
+  sortedSquaresTest
 };

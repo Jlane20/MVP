@@ -15,9 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json("hi from express  ");
 });
-
-
-
 app.post("/roaster", async (req, res) => {
   controller.codeRoast(req, res)
     .then((data) => res.send(data))
@@ -29,13 +26,17 @@ app.put("/testPassed", async(req, res) =>  {
 app.put("/testFailed", async(req, res) =>  {
   controller.testFailed(req, res).then((data) => res.send(data)).catch((err) => console.log(err))
 })
-app.get("/problemData", (req, res) => {
-  controller.getProblemData(req, res).then((data) => res.send(data)).catch((err) => res.send(err))
-})
 app.post("/grading", (req, res) => {
   console.log('request received in index for GRADING ----------')
   controller.updateGrading(req, res).then((data) => res.send(data)).catch((err) => res.send(err))
 })
-app.listen(PORT, () => {
-  console.log(`Server is listening at http://localhost:${PORT}`);
+app.get("/problemData", (req, res) => {
+  controller.getProblemData(req, res).then((data) => res.send(data)).catch((err) => res.send(err))
+})
+app.get("/getHelp", (req, res) => {
+  controller.getHelp(req, res).then((data) => res.send(data)).catch((err)=> res.send(err))
+})
+
+app.listen(3001, () => {
+  console.log(`Server is listening at http://localhost:${3001}`);
 });
