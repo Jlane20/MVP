@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3001;
 const bodyParser = require("body-parser");
 const app = express();
 
+
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
@@ -15,7 +16,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json("hi from express  ");
 });
+app.get("/getTotalDates", (req, res) => {
+  controller.getTotalDates(req, res).then((data) => res.send(data)).catch((err) => console.log(err))
+})
 app.post("/roaster", async (req, res) => {
+  console.log('request received')
   controller.codeRoast(req, res)
     .then((data) => res.send(data))
     .catch((err) => res.send(err.message));
@@ -38,5 +43,5 @@ app.get("/getHelp", (req, res) => {
 })
 
 app.listen(3001, () => {
-  console.log(`Server is listening at http://localhost:${3001}`);
+  console.log(`Server is listening at http://localhost:${PORT}`);
 });

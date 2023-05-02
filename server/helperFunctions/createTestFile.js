@@ -37,9 +37,8 @@ const removeDuplicatesTest = (testCode) => {
   const test1 = fn().apply(null, [[1, 1, 2]]);
   const test2 = fn().apply(null, [[0, 0, 1, 1, 1, 2, 2, 3, 3, 4]]);
   try {
-
-      assert.deepEqual(test1, 2);
-      assert.deepEqual(test2, 5);
+    assert.deepEqual(test1, 2);
+    assert.deepEqual(test2, 5);
 
     return "All Test Passed!";
   } catch (error) {
@@ -47,23 +46,62 @@ const removeDuplicatesTest = (testCode) => {
   }
 };
 
-const sortedSquaresTest = async(testCode) => {
-  console.log('----------------------------');
+const sortedSquaresTest = (testCode) => {
+  console.log("----------------------------");
   const fn = new Function(`return ${testCode.code}`);
-  const test1 = fn().apply(null, [[-4, -1, 0, 3, 10]]);
-  const test2 = fn().apply(null, [[-7, -3, 2, 3, 11]]);
   try {
+    const test1 = fn().apply(null, [[-4, -1, 0, 3, 10]]);
+    const test2 = fn().apply(null, [[-7, -3, 2, 3, 11]]);
     assert.deepEqual(test1, [0, 1, 9, 16, 100]);
     assert.deepEqual(test2, [4, 9, 9, 49, 121]);
     return "All Test Passed!";
   } catch (error) {
-    console.log('error in test',error)
+    console.log("error in test", error);
     return error;
   }
 };
 
+const backspaceCompareTest = (testCode) => {
+  const fn = new Function(`return ${testCode.code}`);
+  try {
+    const test1 = fn().apply(null, ["ab#c", "ad#c"]);
+    const test2 = fn().apply(null, ["ab##", "c#d#"]);
+    const test3 = fn().apply(null, ["a#c", "b"]);
+    assert.deepEqual(test1, true);
+    assert.deepEqual(test2, true);
+    assert.deepEqual(test3, false);
+    return "All Test Passed!";
+
+  } catch (error) {
+    console.log('error in testing', error)
+    return error;
+  }
+};
+
+// const sortedSquaresTest = (testCode) =>{
+//  return new Promise((resolve, reject) => {
+//   const fn = new Function(`return ${testCode.code}`);
+//   const test1 = fn().apply(null, [[-4, -1, 0, 3, 10]]);
+//   const test2 = fn().apply(null, [[-7, -3, 2, 3, 11]]);
+//   try {
+//     assert.deepEqual(test1, [0, 1, 9, 16, 100]);
+//     assert.deepEqual(test2, [4, 9, 9, 49, 121]);
+//     setTimeout(() => {
+//       reject(new Error('Time out hit'))
+//     }, 5000)
+
+//     return "All Test Passed!";
+
+//   } catch (error) {
+//     console.log('error in test',error)
+//     return error;
+//   }
+//  })
+// }
+
 module.exports = {
   twoSumTest,
   removeDuplicatesTest,
-  sortedSquaresTest
+  sortedSquaresTest,
+  backspaceCompareTest
 };

@@ -76,10 +76,24 @@ async function getHelp(problemName) {
   }
 }
 
+async function getTotalDates() {
+  const query =`
+    SELECT date, count(date)
+    FROM grading
+    GROUP BY date;`;
+    try{
+      const res = await pool.query(query);
+      return res.rows;
+    } catch(err) {
+      console.log('error in model for getTotalDates')
+    }
+}
+
 module.exports = {
   getProblemPageData,
   testPassed,
   testFailed,
   updateGrading,
   getHelp,
+  getTotalDates
 };
