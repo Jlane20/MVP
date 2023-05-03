@@ -1,0 +1,292 @@
+@font-face {
+  font-family: "Stella Nova";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./Stella/StellaNovaBlack-K7oVX.woff") format("woff");
+}
+
+$primaryColor:rgb(177,186,195);
+$boxColor: rgb(246,246,246);
+$yellowColor:  rgb(252, 191, 73);
+$blueColor: rgb(0, 48, 73);
+
+.quote{
+  background-color: $yellowColor;
+  border: solid 2px;
+  padding: 10px
+}
+
+.timerButtonStart {
+  border-radius: 80%;
+  border: solid black;
+  background-color: darkgreen;
+  color: white;
+  height: 30px;
+  width: auto
+}
+.timerButtonStop{
+  border-radius: 80%;
+  border: solid black;
+  background-color: red;
+  color: white;
+  height: 30px;
+  width: auto
+}
+.patternTables {
+  display: flex;
+  flex-direction: column;
+justify-content: center;}
+
+.table {
+  width: 80%;
+  border-collapse: collapse;
+  text-align: center;
+  border-radius: 25px;
+  overflow: hidden;
+  align-items: center;
+}
+.thead {
+  position: sticky;
+}
+.thHead{
+  padding: 10px;
+  text-transform:uppercase
+}
+.tdBody {
+ padding: 10px;
+ border-radius: 25px;
+border: 2px black solid;
+box-shadow: 9px;
+}
+
+.tableContainer {
+  width: 100%;
+
+}
+
+#root, .App, body, .layout{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $primaryColor
+}
+
+.problemContainer {
+  font-family: Stella Nova, sans-serif;
+  color: rgb(0, 48, 73);
+  text-transform: lowercase;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+
+  background-color: rgb(252, 191, 73);
+}
+.problemDescription {
+  font-family: Stella Nova, sans-serif;
+  font-size: small;
+  width: 100vw;
+  padding: 25px;
+  height: auto;
+
+  align-items: center;
+  justify-content: center;
+  background-color: $boxColor;
+  overflow: auto;
+}
+.problemDescription.collapsed {
+  width: 10%;
+  background: darkgrey;
+}
+.whiteBoard {
+  display: flex;
+  flex-direction: column;
+  font-family: Stella Nova, sans-serif;
+  width: 100vw;
+  padding: 0px 25px 0px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: $boxColor;
+}
+.whiteBoard.collapsed {
+  width: 5%;
+  background: darkgrey;
+  visibility: hidden;
+}
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 4;
+  padding: 0px 25px 10px;
+  width: 50%;
+  height: auto;
+
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: Stella Nova, sans-serif;
+  background-color:  $boxColor;
+}
+.editorContainer.collapsed {
+  width: 10%;
+  background: darkgrey;
+}
+
+.notesContainer {
+  width: 50%;
+  height: auto;
+  padding: 0px 25px 0px;
+  align-items: center;
+  justify-content: center;
+  font-family: Stella Nova, sans-serif;
+  background-color:  $boxColor;
+}
+.notesContainer.collapsed {
+  width: 5%;
+  background: darkgrey;
+  visibility: hidden;
+}
+.topPane {
+  resize: vertical;
+  display: flex;
+  flex-direction: row;
+  height: 45vh;
+}
+.paneButton {
+  background-color: rgb(0, 48, 73);
+  color: white;
+  height: 15px;
+
+}
+.bottomPane {
+  resize: vertical;
+  display: flex;
+  flex-direction: row;
+  height: 45vh;
+}
+.expandCollapseButton {
+  color: rgb(0, 48, 73);
+  font-family: Stella Nova, sans-serif;
+  background-color: transparent !important;
+  cursor: pointer;
+  border: none;
+  width: 2%;
+  height: 8%;
+  font-size: 15px;
+  transform: translateY(200px) rotate(-90deg);
+}
+
+.navBar {
+  display: flex;
+  gap: 5rem;
+  font-size: large;
+}
+.header {
+  display: inline-flex;
+  color: rgb(0, 48, 73);
+  font-size: 40px;
+  background-color: $primaryColor;
+  font-family: Stella Nova, sans-serif;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0  30px 10px;
+  height: 6vh;
+  border-bottom: solid;
+  width: 100%
+
+}
+.link{
+  font-size: large;
+  font-family: Stella Nova;
+  text-decoration: underline;
+  background: none!important;
+  border: none;
+  color: #069;
+}
+.toastButton {
+  background-color: rgb(214, 40, 40);
+  color: white;
+  font-family: Stella Nova, sans-serif;
+  text-transform: lowercase;
+  width: 80%;
+  font-size: x-large;
+  margin: 10px;
+  height: 5rem;
+}
+.toastButton:hover{
+  background-color: green;
+}
+.notes{
+  border: black;
+  border-style: solid;
+
+}
+.passModal {
+  position: fixed;
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: large;
+  border: solid;
+  font-family: Stella Nova;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $primaryColor;
+  padding: 50px;
+  z-index: 1000;
+}
+.modal2 {
+  background-color: $primaryColor;
+}
+.failModal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: large;
+  border: solid;
+  font-family: Stella Nova;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $primaryColor;
+  padding: 50px;
+  z-index: 1000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: grey;
+  opacity: 0.5;
+  z-index: 1000;
+}
+
+.dropdown {
+  position: relative;
+  z-index: 1000;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: 0;
+  background-color: white;
+  padding: .75rem;
+  border-radius: .25rem;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .1);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  z-index: 1000;
+}
+
+.dropdown > .link:focus + .dropdown-menu{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  z-index: 1000;
+}
