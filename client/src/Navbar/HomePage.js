@@ -29,7 +29,7 @@ const HomePage = () => {
     <h1>HomePage</h1>
     <HeatMap
     style={{zIndex: "0"}}data = {final}/>
-    <div>Need to add selection for category</div>
+    {/* <div>Need to add selection for category</div> */}
     </>
   );
 };

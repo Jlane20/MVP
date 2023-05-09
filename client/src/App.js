@@ -63,12 +63,12 @@ function App() {
                   </ul>
                 </div>
               </div>
-              <li>
+              {/* <li>
                 <Link onClick={clickHandler}>
                   Stats Modal <br></br>
                   pass down targetProblem
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>
